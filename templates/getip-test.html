@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取IP测试</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+</body>
+</html>
+
+
+<script>
+        let ip = '';
+        $.ajax({
+            url: 'https://icanhazip.com/',
+            type: 'get',
+            timeout: 10000,
+            success: function (t) {
+                console.log(t);
+                ip = t.toString();
+                $.ajax({
+                    url: '/get_ip',
+                    type: 'post',
+                    data: {'ip': t},
+                    timeout: 10000,
+                    success: function (t3) {
+                        //list_val = t3
+                    }
+                });
+            }
+        });
+</script>
